@@ -83,4 +83,35 @@
             android:textAppearance="@style/TextAppearance.QS.DataUsage.Secondary" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/radiogroup_network_mode_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:textAppearance="@style/TextAppearance.QS.DataUsage"
+        android:text="@string/quick_settings_cellular_detail_network_mode" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <RadioGroup
+            android:id="@+id/radiogroup_network_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton android:id="@+id/radio_mode_2g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/accessibility_data_connection_2g" />
+            <RadioButton android:id="@+id/radio_mode_3g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/accessibility_data_connection_3g" />
+        </RadioGroup>
+    </LinearLayout>
 </com.android.systemui.qs.tiles.DataUsageDetailView>

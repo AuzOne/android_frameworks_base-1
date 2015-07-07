@@ -26,7 +26,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.RadioGroup;
 
+import com.android.internal.telephony.Phone;
 import com.android.systemui.FontSizeUtils;
 import com.android.systemui.R;
 import com.android.systemui.qs.DataUsageGraph;
@@ -144,5 +146,34 @@ public class DataUsageDetailView extends LinearLayout {
             suffix = "KB";
         }
         return FORMAT.format(val * (bytes < 0 ? -1 : 1)) + " " + suffix;
+    }
+
+    protected void initNetworkMode(int currentNetworkMode) {
+        RadioGroup mNetworkModeGroup = (RadioGroup) findViewById(R.id.radiogroup_network_mode);
+
+        switch (currentNetworkMode) {
+            case Phone.NT_MODE_WCDMA_PREF:
+            case Phone.NT_MODE_WCDMA_ONLY:
+            case Phone.NT_MODE_GSM_UMTS:
+                mNetworkModeGroup.check(R.id.radio_mode_3g);
+                break;
+            case Phone.NT_MODE_GSM_ONLY:
+            case Phone.NT_MODE_CDMA:
+            case Phone.NT_MODE_CDMA_NO_EVDO:
+            case Phone.NT_MODE_EVDO_NO_CDMA:
+            case Phone.NT_MODE_GLOBAL:
+                mNetworkModeGroup.check(R.id.radio_mode_2g);
+        }
+
+        mNetworkModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radio_mode_3g) {
+                    CellularTile.mNextNetworkMode = Phone.NT_MODE_WCDMA_ONLY;
+                } else {
+                    CellularTile.mNextNetworkMode = Phone.NT_MODE_GSM_ONLY;
+                }
+            }
+        });
     }
 }

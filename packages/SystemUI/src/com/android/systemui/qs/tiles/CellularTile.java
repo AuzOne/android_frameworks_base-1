@@ -49,6 +49,8 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
             .putExtra("TARGET_CLASS", "com.android.phone.MobileNetworkSettings")
             .putExtra("TARGET_THEME", "Theme.Material.Settings");
 
+    protected static int mNextNetworkMode = -1;
+
     private final NetworkController mController;
     private final MobileDataController mDataController;
     private final CellularDetailAdapter mDetailAdapter;
@@ -273,6 +275,7 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
                     ? convertView
                     : LayoutInflater.from(mContext).inflate(R.layout.data_usage, parent, false));
             final DataUsageInfo info = mDataController.getDataUsageInfo();
+            v.initNetworkMode(mTelephonyManager.getPreferredNetworkType());
             if (info == null) return v;
             v.bind(mHost, info);
             return v;
@@ -280,7 +283,15 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
 
         @Override
         public void onHideDetail() {
-            // noop
+            new Thread(new Runnable() {
+                public void run() {
+                    if (mNextNetworkMode != -1) {
+                        if (mNextNetworkMode != mTelephonyManager.getPreferredNetworkType())
+                                mTelephonyManager.setPreferredNetworkType(mNextNetworkMode);
+                        mNextNetworkMode = -1;
+                    }
+                }
+            }).start();
         }
 
         public void setMobileDataEnabled(boolean enabled) {
