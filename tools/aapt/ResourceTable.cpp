@@ -2688,8 +2688,8 @@ ResourceTable::validateLocalizations(void)
 
         // Look for strings with no default localization
         if (configSrcMap.count(defaultLocale) == 0) {
-            SourcePos().warning("string '%s' has no default translation.",
-                    String8(nameIter->first).string());
+            //SourcePos().warning("string '%s' has no default translation.",
+            //        String8(nameIter->first).string());
             if (mBundle->getVerbose()) {
                 for (map<String8, SourcePos>::const_iterator locales = configSrcMap.begin();
                     locales != configSrcMap.end();
@@ -2745,10 +2745,10 @@ ResourceTable::validateLocalizations(void)
                      iter++) {
                     configStr.appendFormat(" %s", iter->string());
                 }
-                SourcePos().warning("string '%s' is missing %u required localizations:%s",
-                        String8(nameIter->first).string(),
-                        (unsigned int)missingConfigs.size(),
-                        configStr.string());
+                //SourcePos().warning("string '%s' is missing %u required localizations:%s",
+                //        String8(nameIter->first).string(),
+                //        (unsigned int)missingConfigs.size(),
+                //        configStr.string());
             }
         }
     }
@@ -3144,9 +3144,9 @@ status_t ResourceTable::flatten(Bundle* bundle, const sp<const ResourceFilter>& 
                     if (!validResources[i]) {
                         sp<ConfigList> c = t->getOrderedConfigs().itemAt(i);
                         if (c != NULL) {
-                            fprintf(stderr, "%s: no entries written for %s/%s (0x%08x)\n", log_prefix,
-                                    String8(typeName).string(), String8(c->getName()).string(),
-                                    Res_MAKEID(p->getAssignedId() - 1, ti, i));
+                            //fprintf(stderr, "%s: no entries written for %s/%s (0x%08x)\n", log_prefix,
+                            //        String8(typeName).string(), String8(c->getName()).string(),
+                            //        Res_MAKEID(p->getAssignedId() - 1, ti, i));
                         }
                         missing_entry = true;
                     }
