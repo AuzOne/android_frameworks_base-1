@@ -201,6 +201,11 @@ public class CastTile extends QSTile<QSTile.BooleanState> {
             return mItems;
         }
 
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
+
         private void updateItems(Set<CastDevice> devices) {
             if (mItems == null) return;
             Item[] items = null;

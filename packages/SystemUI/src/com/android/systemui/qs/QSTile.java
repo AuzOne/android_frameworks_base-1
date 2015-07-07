@@ -99,6 +99,7 @@ public abstract class QSTile<TState extends State> implements Listenable {
         Intent getSettingsIntent();
         StatusBarPanelCustomTile getCustomTile();
         void setToggleState(boolean state);
+        void onHideDetail();
     }
 
     // safe to call from any thread

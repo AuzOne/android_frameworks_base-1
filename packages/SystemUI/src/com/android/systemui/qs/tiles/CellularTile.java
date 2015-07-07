@@ -265,6 +265,11 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
             return v;
         }
 
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
+
         public void setMobileDataEnabled(boolean enabled) {
             fireToggleStateChanged(enabled);
         }

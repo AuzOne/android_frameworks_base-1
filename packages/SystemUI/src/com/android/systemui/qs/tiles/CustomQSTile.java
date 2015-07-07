@@ -242,5 +242,10 @@ public class CustomQSTile extends QSTile<QSTile.State> {
                 //
             }
         }
+
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
     }
 }

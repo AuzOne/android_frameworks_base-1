@@ -498,6 +498,11 @@ public class UserSwitcherController {
         }
 
         @Override
+        public void onHideDetail() {
+            // noop
+        }
+
+        @Override
         public Intent getSettingsIntent() {
             return USER_SETTINGS_INTENT;
         }

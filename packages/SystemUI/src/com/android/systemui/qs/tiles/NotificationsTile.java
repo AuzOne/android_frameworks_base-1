@@ -213,5 +213,10 @@ public class NotificationsTile extends QSTile<NotificationsTile.NotificationsSta
             vp.postVolumeChanged(AudioManager.STREAM_RING, AudioManager.FLAG_SHOW_UI);
             return v;
         }
+
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
     };
 }

@@ -218,6 +218,11 @@ public class BluetoothTile extends QSTile<QSTile.BooleanState>  {
             return mItemsList;
         }
 
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
+
         public void setItemsVisible(boolean visible) {
             if (mAdapter == null) return;
             if (visible) {

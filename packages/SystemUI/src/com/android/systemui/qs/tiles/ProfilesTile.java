@@ -185,6 +185,11 @@ public class ProfilesTile extends QSTile<QSTile.State> implements KeyguardMonito
             return mDetails;
         }
 
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
+
         private void rebuildProfilesList(boolean populate) {
             mProfilesList.clear();
             if (populate) {

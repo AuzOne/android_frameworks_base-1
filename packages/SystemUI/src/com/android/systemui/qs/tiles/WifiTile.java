@@ -306,6 +306,11 @@ public class WifiTile extends QSTile<QSTile.SignalState> {
         }
 
         @Override
+        public void onHideDetail() {
+            // noop
+        }
+
+        @Override
         public void onAccessPointsChanged(final List<AccessPoint> accessPoints) {
             mAccessPoints = accessPoints;
             setItemsVisible(mState.enabled);

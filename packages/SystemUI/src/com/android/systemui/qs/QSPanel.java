@@ -644,6 +644,7 @@ public class QSPanel extends ViewGroup {
 
     private final AnimatorListenerAdapter mTeardownDetailWhenDone = new AnimatorListenerAdapter() {
         public void onAnimationEnd(Animator animation) {
+            mDetailRecord.detailAdapter.onHideDetail();
             mDetailContent.removeAllViews();
             setDetailRecord(null);
             mClosingDetail = false;

@@ -333,6 +333,11 @@ public class ScreenTimeoutTile extends QSTile<ScreenTimeoutTile.TimeoutState> {
         }
 
         @Override
+        public void onHideDetail() {
+            // noop
+        }
+
+        @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int selectedTimeout = Integer.valueOf(mValues[position]);
             Settings.System.putInt(mContext.getContentResolver(),

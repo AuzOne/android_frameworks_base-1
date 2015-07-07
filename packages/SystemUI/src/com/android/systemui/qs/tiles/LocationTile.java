@@ -258,6 +258,11 @@ public class LocationTile extends QSTile<QSTile.BooleanState> {
             return mDetails;
         }
 
+        @Override
+        public void onHideDetail() {
+            // noop
+        }
+
         private void rebuildLocationList(boolean populate) {
             mLocationList.clear();
             if (populate) {
