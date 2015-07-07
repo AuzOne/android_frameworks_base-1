@@ -6618,7 +6618,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mBootMsgDialog.show();
                 }
                 mBootMsgDialog.setMessage("Powered By readone Optimizations\n\n" + msg
-                + "\n\nCM Lollipop 5.1.1 readone");
+                + "\n\nCM Lollipop 5.1.1_r6 by readone");
             }
         });
     }
