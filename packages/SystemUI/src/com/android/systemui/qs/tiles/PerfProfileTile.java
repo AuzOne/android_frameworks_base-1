@@ -160,12 +160,20 @@ public class PerfProfileTile extends QSTile<PerfProfileTile.ProfileState> {
     }
 
     private void changeToNextProfile() {
-        int current = getCurrentProfileIndex() + 1;
-        if (current >= mPerfProfileValues.length) {
-            current = 0;
-        }
-        mPm.setPowerProfile(mPerfProfileValues[current]); // content observer will notify
+        mHandler.removeCallbacks(mNextProfileRunnable);
+        mHandler.postDelayed(mNextProfileRunnable, 50);
     }
+
+    private final Runnable mNextProfileRunnable = new Runnable() {
+        @Override
+        public void run() {
+            int current = getCurrentProfileIndex() + 1;
+            if (current >= mPerfProfileValues.length) {
+                current = 0;
+            }
+            mPm.setPowerProfile(mPerfProfileValues[current]); // content observer will notify
+        }
+    };
 
     public static class ProfileState extends QSTile.State {
         public int profile;
