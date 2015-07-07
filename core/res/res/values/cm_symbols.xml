@@ -24,6 +24,8 @@
          frameworks/base/core/res/MakeJavaSymbols.sed for how to easily generate
          this.
     -->
+      <!-- readone Logo -->
+    <java-symbol type="drawable" name="lp" />
     <java-symbol type="id" name="permission_text" />
     <java-symbol type="id" name="permission_remember_layout" />
     <java-symbol type="id" name="permission_remember_choice_checkbox" />
