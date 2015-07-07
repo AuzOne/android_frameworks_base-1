@@ -184,7 +184,7 @@ public class QSPanel extends ViewGroup {
 
     public void updateResources() {
         final Resources res = mContext.getResources();
-        final int columns = Math.max(1, res.getInteger(R.integer.quick_settings_num_columns));
+        final int columns = Math.max(1, getColumnCount());
         mCellHeight = res.getDimensionPixelSize(R.dimen.qs_tile_height);
         mCellWidth = (int)(mCellHeight * TILE_ASPECT);
         mLargeCellHeight = res.getDimensionPixelSize(R.dimen.qs_dual_tile_height);
@@ -678,5 +678,14 @@ public class QSPanel extends ViewGroup {
         void onShowingDetail(QSTile.DetailAdapter detail);
         void onToggleStateChanged(boolean state);
         void onScanStateChanged(boolean state);
+    }
+
+    private int getColumnCount() {
+        if (Settings.Secure.getInt(mContext.getContentResolver(),
+                Settings.Secure.QS_USE_FOUR_COLUMNS, 0) == 1) {
+            return 4;
+        } else {
+            return mContext.getResources().getInteger(R.integer.quick_settings_num_columns);
+        }
     }
 }
