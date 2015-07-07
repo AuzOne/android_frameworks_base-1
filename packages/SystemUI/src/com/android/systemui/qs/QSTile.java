@@ -64,6 +64,7 @@ public abstract class QSTile<TState extends State> implements Listenable {
     protected final TState mState = newTileState();
     private final TState mTmpState = newTileState();
     private boolean mAnnounceNextStateChange;
+    private boolean mDual;
 
     abstract protected TState newTileState();
     abstract protected void handleClick();
@@ -120,6 +121,14 @@ public abstract class QSTile<TState extends State> implements Listenable {
 
     public void showDetail(boolean show) {
         mHandler.obtainMessage(H.SHOW_DETAIL, show ? 1 : 0, 0).sendToTarget();
+    }
+
+    protected final void setDual(boolean dual) {
+        mDual = dual;
+    }
+
+    protected final boolean isDual() {
+        return mDual;
     }
 
     protected final void refreshState() {

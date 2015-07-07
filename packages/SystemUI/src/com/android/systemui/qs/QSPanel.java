@@ -249,9 +249,12 @@ public class QSPanel extends ViewGroup {
     public void refreshAllTiles() {
         mUseMainTiles = Settings.Secure.getIntForUser(getContext().getContentResolver(),
                 Settings.Secure.QS_USE_MAIN_TILES, 1, UserHandle.myUserId()) == 1;
+        boolean isDual;
         for (int i = 0; i < mRecords.size(); i++) {
             TileRecord r = mRecords.get(i);
-            r.tileView.setDual(mUseMainTiles && i < 2);
+            isDual = mUseMainTiles && i < 2;
+            r.tileView.setDual(isDual);
+            r.tile.setDual(isDual);
             r.tile.refreshState();
         }
         mFooter.refreshState();
