@@ -40,7 +40,7 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
         super(view, R.drawable.status_background, R.color.status_bar_background_opaque,
                 R.color.status_bar_background_semi_transparent,
                 R.color.status_bar_background_transparent,
-                com.android.internal.R.color.battery_saver_mode_color);
+                com.android.internal.R.color.black);
         mView = view;
         final Resources res = mView.getContext().getResources();
         mIconAlphaWhenOpaque = res.getFraction(R.dimen.status_bar_icon_drawing_alpha, 1, 1);
