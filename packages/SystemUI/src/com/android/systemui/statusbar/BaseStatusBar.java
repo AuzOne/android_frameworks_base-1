@@ -265,6 +265,10 @@ public abstract class BaseStatusBar extends SystemUI implements
         return mDeviceProvisioned;
     }
 
+    public Handler getHandler() {
+        return mHandler != null ? mHandler : createHandler();
+    }
+
     protected final ContentObserver mSettingsObserver = new ContentObserver(mHandler) {
         @Override
         public void onChange(boolean selfChange) {
@@ -1857,6 +1861,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected abstract void tick(StatusBarNotification n, boolean firstTime);
     protected abstract void updateExpandedViewPos(int expandedPosition);
     protected abstract boolean shouldDisableNavbarGestures();
+    public abstract boolean isExpandedVisible();
 
     public abstract void addNotification(StatusBarNotification notification,
             RankingMap ranking);
