@@ -531,6 +531,7 @@ public final class PowerManagerService extends SystemService
             if (phase == PHASE_BOOT_COMPLETED) {
                 final long now = SystemClock.uptimeMillis();
                 mBootCompleted = true;
+                mPerformanceManager.reset();
                 mDirty |= DIRTY_BOOT_COMPLETED;
                 userActivityNoUpdateLocked(
                         now, PowerManager.USER_ACTIVITY_EVENT_OTHER, 0, Process.SYSTEM_UID);
@@ -652,8 +653,6 @@ public final class PowerManagerService extends SystemService
             resolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED),
                     false, mSettingsObserver, UserHandle.USER_ALL);
-
-            mPerformanceManager.reset();
 
             // Go.
             readConfigurationLocked();
