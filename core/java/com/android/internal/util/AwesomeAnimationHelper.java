@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.internal.util.eos;
+package com.android.internal.util;
 
 import android.content.Context;
 import android.content.res.Resources;
